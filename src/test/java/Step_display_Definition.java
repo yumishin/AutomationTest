@@ -3,7 +3,7 @@ import cucumber.api.java.en.Given;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class Step_search_Definition {
+public class Step_display_Definition {
 
     ChromeDriver driver = new ChromeDriver();
 

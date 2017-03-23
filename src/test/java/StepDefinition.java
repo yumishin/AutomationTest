@@ -24,7 +24,7 @@ public class StepDefinition {
         driver.findElement(By.id("searchForm")).findElement(By.tagName("button")).click();
     }
 
-    @Then("^result page contains \"(.*)\"$")
+    @Then("^search result page contains \"(.*)\"$")
     public void verifyResultSearch(String text) {
         Boolean check = driver.findElement(By.className("resultView")).getText().contains(text);
         Assert.assertTrue(check);
@@ -36,6 +36,7 @@ public class StepDefinition {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
+
     @When("^user click to delivery$")
     public void clickToDelivery() {
         driver.findElement(By.id("delivery")).click();
@@ -44,6 +45,29 @@ public class StepDefinition {
     @Then("^product detail page contains \"(.*)\" in the \"(.*)\" area$")
     public void verifyProductDetails(String text, String area) {
         Boolean check = driver.findElement(By.id(area)).getText().contains(text);
+        Assert.assertTrue(check);
+    }
+
+
+    @When("^user click to login page$")
+    public void clickToLogin() {
+        driver.findElement(By.className("loginBtn")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+
+    @When("^user put the id and pw \"(.*)\"$")
+    public void email(String text) {
+        driver.findElement(By.id("email")).sendKeys(text);
+        driver.findElement(By.id("password")).sendKeys(text);
+        driver.findElement(By.id("loginButton")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+
+    @Then("^login result page contains \"(.*)\"$")
+    public void verifyResultLogin(String text) {
+        Boolean check = driver.findElement(By.className("loginBnt")).findElement(By.linkText("로그아웃")).getText().contains(text);
         Assert.assertTrue(check);
     }
 
