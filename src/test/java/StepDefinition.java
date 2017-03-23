@@ -71,6 +71,12 @@ public class StepDefinition {
         Assert.assertTrue(check);
     }
 
+    @When("^user goes 1st timesale page$")
+    public void clickTotimesalepage() {
+        driver.findElement(By.id("dealArea")).findElement(By.tagName("img")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
 
     @After
     public void close() {
