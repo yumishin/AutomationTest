@@ -11,7 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class StepDefinition {
 
-    ChromeDriver driver = new ChromeDriver();
+    public static ChromeDriver driver = new ChromeDriver();
+
+    //ChromeDriver driver = new ChromeDriver();
 
     @Given("^user open URL \"(.*)\"$")
     public void openChrome(String url) {
@@ -27,14 +29,7 @@ public class StepDefinition {
     }
 
 
-    @When("^user put the id and pw \"(.*)\"$")
-    //로그인페이지>ID,PW 입력
-    public void email(String text) {
-        driver.findElement(By.id("email")).sendKeys(text);
-        driver.findElement(By.id("password")).sendKeys(text);
-        driver.findElement(By.id("loginButton")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
+
 
 
     @Then("^login result page contains \"(.*)\"$")
