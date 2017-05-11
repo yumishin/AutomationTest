@@ -2,10 +2,11 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -35,8 +36,16 @@ public class StepDefinition {
     @Then("^login result page contains \"(.*)\"$")
     //메인>로그인결과 확인
     public void verifyResultLogin(String text) {
-        Boolean check = driver.findElement(By.className("loginBnt")).findElement(By.linkText("로그아웃")).getText().contains(text);
-        Assert.assertTrue(check);
+        List<WebElement> webElement = driver.findElements(By.className("loginBtn"));
+
+
+        System.out.print(webElement);
+
+        //By.className("navi loginBtn")).findElement((By.linkText("로그아웃"));
+
+
+
+        //Assert.assertTrue(check);
     }
 
 
