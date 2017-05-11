@@ -26,4 +26,12 @@ public class Step_member_Definition {
 
     }
 
+    @When("^user click to signup page$")
+    //메인>로그인버튼 클릭
+    public void clickTosignup() {
+        ChromeDriver driver = StepDefinition.driver;
+        driver.findElement(By.linkText("회원가입")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
 }
