@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Step_member_Definition {
 
     @When("^user put the id\"(.*)\"$")
-    //로그인페이지>ID 입력
+    //Login page > Input ID
     public void email(String text) {
         ChromeDriver driver = StepDefinition.driver;
 
@@ -24,6 +24,17 @@ public class Step_member_Definition {
         driver.findElement(By.className("login-form-submit")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
+    }
+
+    //SNS SignUp > Naver
+    @When("^user click to SignUp page$")
+
+
+    public void clickToSignUp() {
+        ChromeDriver driver = StepDefinition.driver;
+        driver.findElement(By.className("navi")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.findElement(By.className("member-SNS-naver")).click();
     }
 
 }

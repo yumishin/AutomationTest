@@ -31,8 +31,6 @@ public class StepDefinition {
 
 
 
-
-
     @Then("^login result page contains \"(.*)\"$")
     //메인>로그인결과 확인
     public void verifyResultLogin(String text) {
