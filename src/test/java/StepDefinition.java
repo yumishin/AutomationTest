@@ -12,12 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 public class StepDefinition {
 
-    public static ChromeDriver driver = new ChromeDriver();
-
-    //ChromeDriver driver = new ChromeDriver();
+    public static ChromeDriver driver;
 
     @Given("^user open URL \"(.*)\"$")
     public void openChrome(String url) {
+        driver = new ChromeDriver();
         driver.get(url);
     }
 
