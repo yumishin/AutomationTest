@@ -24,7 +24,7 @@ public class StepDefinition {
     @When("^user click to login page$")
     //메인>로그인버튼 클릭
     public void clickToLogin() {
-        driver.findElement(By.className("loginBtn")).click();
+        driver.findElement(By.xpath("//a[contains(.,'마이컬리')]")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

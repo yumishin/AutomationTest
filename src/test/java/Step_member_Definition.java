@@ -12,7 +12,7 @@ public class Step_member_Definition {
     public void email(String text) {
         ChromeDriver driver = StepDefinition.driver;
 
-        driver.findElement(By.id("email")).sendKeys(text, Keys.TAB);
+        driver.findElement(By.xpath("//input[@name='m_id']")).sendKeys(text, Keys.TAB);
     }
 
     @When("^user put the pw \"(.*)\"$")
@@ -20,8 +20,8 @@ public class Step_member_Definition {
     public void password(String text) {
         ChromeDriver driver = StepDefinition.driver;
 
-        driver.findElement(By.id("password")).sendKeys(text);
-        driver.findElement(By.className("login-form-submit")).click();
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(text);
+        driver.findElement(By.xpath("//input[@value='로그인']")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
