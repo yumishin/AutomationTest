@@ -11,9 +11,11 @@ public class Step_display_Definition {
     ChromeDriver driver = new ChromeDriver();
 
     @When("^user goes 1st timesale page$")
-    //메인>첫번째 구좌 한정특가 클릭
+    //메인>인기상품 가운데 상품 클릭
     public void clickTotimesalepage() {
         driver.findElement(By.id("dealArea")).findElement(By.tagName("img")).click();
+        //driver.findElement(By.xpath("//img[@class='swiper-lazy swiper-lazy-loaded']"));
+        driver.findElement(By.xpath("//img[contains(@class,'swiper-lazy swiper-lazy-loaded')]")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

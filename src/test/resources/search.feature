@@ -1,8 +1,8 @@
 @smokeTest
-Feature: I want to test Memebox search
+Feature: I want to test kurly search
   Scenario: search a simple string
-    Given user open URL "http://www.memebox.com/"
-    When user search "아임미미"
-    Then search result page contains "'아임미미'"
+    Given user open URL "https://www.kurly.com/m2"
+    When user search ""
+    Then search result page contains "''"
 
 
