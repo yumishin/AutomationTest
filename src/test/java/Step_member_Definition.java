@@ -26,4 +26,36 @@ public class Step_member_Definition {
 
     }
 
+    @When("^user click the sign-up \"(.*)\"$")
+    //Login page > Input PW > Enter> Main validation check
+    public void clicktoSignUp(String text) {
+        ChromeDriver driver = StepDefinition.driver;
+        driver.findElement(By.className("member-login-anchor-button wide")).click();
+        //<a href="/m2/mem/join.php" class="member-login-anchor-button wide">회원가입</a>
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    }
+
+    @When("^user click to logout \"(.*)\"$")
+    //Login page > Input PW > Enter> Main validation check
+    public void clicktoLogout(String text) {
+        ChromeDriver driver = StepDefinition.driver;
+        driver.findElement(By.className("bnt_logout")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+    @When("^user click to change the pwd in main pop-up \"(.*)\"$")
+    //Login page > Input PW > Enter> Main validation check
+    public void mainpopup_change_PWD(String text) {
+        ChromeDriver driver = StepDefinition.driver;
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame(driver.findElement(By.className("bnt_group")));
+        driver.findElement(By.className("btn btn_close")).click();
+        //driver.findElement(By.xpath("//div[@id='popPassword']/div/div/a")).click();
+        //<a href="/shop/member/indb.notice_change_pwd.php" target="ifrmHidden" class="btn btn_close">다음에하기</a>
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+
+
 }

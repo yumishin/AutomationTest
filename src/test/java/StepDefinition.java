@@ -18,6 +18,7 @@ public class StepDefinition {
     public void openChrome(String url) {
         driver = new ChromeDriver();
         driver.get(url);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
 
@@ -34,14 +35,8 @@ public class StepDefinition {
     //메인>로그인결과 확인
     public void verifyResultLogin(String text) {
         List<WebElement> webElement = driver.findElements(By.className("loginBtn"));
-
-
         System.out.print(webElement);
-
         //By.className("navi loginBtn")).findElement((By.linkText("로그아웃"));
-
-
-
         //Assert.assertTrue(check);
     }
 
