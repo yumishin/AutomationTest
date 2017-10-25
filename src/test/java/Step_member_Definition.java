@@ -11,7 +11,6 @@ public class Step_member_Definition {
     //로그인페이지>ID 입력
     public void email(String text) {
         ChromeDriver driver = StepDefinition.driver;
-
         driver.findElement(By.xpath("//input[@name='m_id']")).sendKeys(text, Keys.TAB);
     }
 
@@ -19,18 +18,17 @@ public class Step_member_Definition {
     //Login page > Input PW > Enter> Main validation check
     public void password(String text) {
         ChromeDriver driver = StepDefinition.driver;
-
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys(text);
         driver.findElement(By.xpath("//input[@value='로그인']")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
 
-    @When("^user click the sign-up \"(.*)\"$")
+    @When("^user click the sign up \"(.*)\"$")
     //Login page > Input PW > Enter> Main validation check
-    public void clicktoSignUp(String text) {
+    public void clickSignUp(String text) {
         ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.className("member-login-anchor-button wide")).click();
+        driver.findElement(By.xpath("//a[@href='/m2/mem/join.php']")).click();
         //<a href="/m2/mem/join.php" class="member-login-anchor-button wide">회원가입</a>
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
@@ -38,7 +36,7 @@ public class Step_member_Definition {
 
     @When("^user click to logout \"(.*)\"$")
     //Login page > Input PW > Enter> Main validation check
-    public void clicktoLogout(String text) {
+    public void clickLogout(String text) {
         ChromeDriver driver = StepDefinition.driver;
         driver.findElement(By.className("bnt_logout")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
