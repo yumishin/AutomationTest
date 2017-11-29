@@ -3,8 +3,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Step_display_Definition {
@@ -36,6 +40,31 @@ public class Step_display_Definition {
         Assert.assertTrue(check);
     }
 
+    //메인배너 전체 이미지 200 ok check
+    @When("^user click the main rolling banners$")
+    //Login page > Input PW > Enter> Main validation check
+    public void clickSignUp() {
+        ChromeDriver driver = StepDefinition.driver;
+        List<WebElement> images = driver.findElement(By.id("today-banner")).findElements(By.tagName("img"));
+
+        for (WebElement image : images) {
+            String imageSrc = image.getAttribute("src");
+            if (imageSrc == null) imageSrc = image.getAttribute("data-src").replace("//", "http://");
+            checkUrl(imageSrc);
+        }
+    }
+
+    public void checkUrl(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            int status = con.getResponseCode();
+            Assert.assertTrue(status == 200);
+        } catch (Exception ex) {
+            Assert.fail(ex.toString());
+        }
 
 
+    }
 }
