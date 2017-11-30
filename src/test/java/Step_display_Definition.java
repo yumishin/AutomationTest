@@ -43,9 +43,13 @@ public class Step_display_Definition {
     //메인배너 전체 이미지 200 ok check
     @When("^user click the main rolling banners$")
     //Login page > Input PW > Enter> Main validation check
-    public void clickSignUp() {
+    public void valifyToMainRollingBannersAll() {
         ChromeDriver driver = StepDefinition.driver;
         List<WebElement> images = driver.findElement(By.id("today-banner")).findElements(By.tagName("img"));
+
+//        images.get(0).click();
+//        images.get(1).click();
+//        images.get(2).click();
 
         for (WebElement image : images) {
             String imageSrc = image.getAttribute("src");

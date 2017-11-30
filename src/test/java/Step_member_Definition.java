@@ -52,7 +52,8 @@ public class Step_member_Definition {
     //sign-up page > id check button click
     public void InputIDCheckClick() {
         ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[1]/div[2]/button")).click();
+        driver.findElement(By.className("field_id")).findElement(By.tagName("button")).click();
+        //driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[1]/div[2]/button")).click();
         //findElement(By.xpath("//button[contains(@onclick,'idCheck('[name=m_id]')]"))
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
@@ -95,28 +96,15 @@ public class Step_member_Definition {
 
     }
 
-    @When("^sign up_input phoneNumber1 \"(.*)\"$")
+    @When("^sign up_input phoneNumber1 \"(.*) (.*) (.*)\"$")
     //sign-up page > input phone number1
-    public void InputPhoneNumber1(String text) {
+    public void InputPhoneNumber1(String part1, String part2, String part3) {
         ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[6]/div[2]/div/input[1]")).sendKeys(text);
+        driver.findElement(By.className("field_phone")).findElement(By.className("phone_fst")).sendKeys(part1);
+        driver.findElement(By.className("field_phone")).findElement(By.className("phone_snd")).sendKeys(part2);
+        driver.findElement(By.className("field_phone")).findElement(By.className("phone_trd")).sendKeys(part3);
+        //driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[6]/div[2]/div/input[1]")).sendKeys(text);
         //findElement(By.tagName("styled-form-input phone_fst"))
-
-    }
-
-    @When("^sign up_input phoneNumber2 \"(.*)\"$")
-    //sign-up page > input phone number1
-    public void InputPhoneNumber2(String text) {
-        ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[6]/div[2]/div/input[2]")).sendKeys(text);
-
-    }
-
-    @When("^sign up_input phoneNumber3 \"(.*)\"$")
-    //sign-up page > input phone number1
-    public void InputPhoneNumber3(String text) {
-        ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.xpath(".//*[@id='form']/div[1]/div[6]/div[2]/div/input[3]")).sendKeys(text);
 
     }
 
@@ -139,7 +127,7 @@ public class Step_member_Definition {
     //sign-up page > click to phone number confirm
     public void inputPhoneNumConfirm(String text) {
         ChromeDriver driver = StepDefinition.driver;
-        driver.findElement(By.className("num_count")).sendKeys(text);
+        driver.findElement(By.name("auth_code")).sendKeys(text);
         //.//*[@id='form']/div[1]/div[6]/div[3]/div/input/div/input
 
     }
@@ -152,6 +140,7 @@ public class Step_member_Definition {
         Boolean check = driver.findElement(By.className("layout-page-header-title-wrapper")).getText().contains(text);
         Assert.assertTrue(check);
     }
+
 
     @When("^user click to logout \"(.*)\"$")
     //Login page > Input PW > Enter> Main validation check
@@ -167,7 +156,7 @@ public class Step_member_Definition {
         ChromeDriver driver = StepDefinition.driver;
         driver.switchTo().defaultContent();
         driver.switchTo().frame(driver.findElement(By.className("bnt_group")));
-        driver.findElement(By.className("btn btn_close")).click();
+        driver.findElement(By.className("btn_close")).click();
         //driver.findElement(By.xpath("//div[@id='popPassword']/div/div/a")).click();
         //<a href="/shop/member/indb.notice_change_pwd.php" target="ifrmHidden" class="btn btn_close">다음에하기</a>
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
